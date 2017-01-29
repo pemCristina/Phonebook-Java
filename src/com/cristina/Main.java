@@ -24,6 +24,7 @@ public class Main {
                     break;
 
                 case LIST:
+                    contacts.loadContacts();
                     break;
 
                 case HELP:

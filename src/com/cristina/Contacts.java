@@ -34,6 +34,12 @@ public class Contacts {
         System.out.println("Saved new contact!");
     }
 
+    public void loadContacts() {
+        for (Contact c: contacts) {
+            System.out.println(c.getName() + " - " + c.getPhone());
+        }
+    }
+
     public void deleteContact() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Position to delete? ");
