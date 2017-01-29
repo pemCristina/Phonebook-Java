@@ -1,10 +1,12 @@
 package com.cristina;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Contacts {
     private LinkedList<Contact> contacts = new LinkedList<>();
+    private FileManager fileManager = new FileManager();
 
     public LinkedList<Contact> getContacts() {
         return contacts;
@@ -30,6 +32,21 @@ public class Contacts {
 
         Contact contact = new Contact(name, phone);
         contacts.add(contact);
+
+
+        String currentDirectory = System.getProperty("user.dir");
+        String fileName = "\\phonebook.txt";
+        String filePath = currentDirectory + fileName;
+
+        for (Contact c: contacts) {
+            stringLinkedList.add(c.getName() + "-" + c.getPhone() + "-");
+        }
+
+        try {
+            fileManager.createFile(filePath, stringLinkedList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Saved new contact!");
     }
