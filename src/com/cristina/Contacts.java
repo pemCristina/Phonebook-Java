@@ -2,6 +2,7 @@ package com.cristina;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Contacts {
@@ -33,17 +34,12 @@ public class Contacts {
         Contact contact = new Contact(name, phone);
         contacts.add(contact);
 
-
-        String currentDirectory = System.getProperty("user.dir");
-        String fileName = "\\phonebook.txt";
-        String filePath = currentDirectory + fileName;
-
         for (Contact c: contacts) {
             stringLinkedList.add(c.getName() + "-" + c.getPhone() + "-");
         }
 
         try {
-            fileManager.createFile(filePath, stringLinkedList);
+            fileManager.createFile(Constants.FILE_PATH, stringLinkedList);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,6 +48,21 @@ public class Contacts {
     }
 
     public void loadContacts() {
+        contacts.clear();
+
+        List<String> fileContacts = fileManager.readFile(Constants.FILE_PATH);
+        for (String line: fileContacts) {   // Each line: name-phone-
+            int dashPosition = line.indexOf('-');
+
+            String name = line.substring(0, dashPosition);
+            String phone = line.substring(dashPosition + 1, line.length() - 1);
+
+            Contact contact = new Contact(name, phone);
+            contacts.add(contact);
+        }
+
+
+
         for (Contact c: contacts) {
             System.out.println(c.getName() + " - " + c.getPhone());
         }
