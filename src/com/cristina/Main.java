@@ -58,7 +58,7 @@ public class Main {
         System.out.println("·········································");
         System.out.println("·\tA - Add a new contact               ·");
         System.out.println("·\tD - Delete a contact by position    ·");
-        System.out.println("·\tL - List a phonebook                ·");
+        System.out.println("·\tL - Load a phonebook                ·");
         System.out.println("·\tH - Display help                    ·");
         System.out.println("·\tQ - Quit program                    ·");
         System.out.println("·········································");
