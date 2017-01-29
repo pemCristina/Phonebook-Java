@@ -92,6 +92,9 @@ public class Contacts {
             System.out.println(i + " - " + contact.getName() + " - " + contact.getPhone());
             ++i;
         }
+        if(contacts.size() == 0) {
+            System.out.println("No contacts");
+        }
     }
 }
 
