@@ -1,5 +1,6 @@
 package com.cristina;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,20 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         Contacts contacts = new Contacts();
         boolean end = false;
+
+        try {
+            File file = new File(Constants.FILE_PATH);
+
+            if (file.createNewFile()){
+                System.out.println("Creating " + Constants.FILE_NAME + " in " + Constants.CURRENT_DIRECTORY);
+            }else{
+                contacts.loadContacts();
+                System.out.println("Loaded data from " + Constants.FILE_NAME);
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating new file");
+            System.out.println(e);
+        }
 
         System.out.println("Welcome to Contacts!");
         do {
@@ -25,6 +40,7 @@ public class Main {
 
                 case LIST:
                     contacts.loadContacts();
+                    contacts.printContacts();
                     break;
 
                 case HELP:
