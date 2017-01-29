@@ -60,12 +60,6 @@ public class Contacts {
             Contact contact = new Contact(name, phone);
             contacts.add(contact);
         }
-
-
-
-        for (Contact c: contacts) {
-            System.out.println(c.getName() + " - " + c.getPhone());
-        }
     }
 
     public void deleteContact() {
@@ -81,6 +75,14 @@ public class Contacts {
             }
         } catch (Exception e) {
             System.out.println("Error!");
+        }
+    }
+
+    public void printContacts () {
+        int i = 0;
+        for (Contact contact: contacts) {
+            System.out.println(i + " - " + contact.getName() + " - " + contact.getPhone());
+            ++i;
         }
     }
 }
