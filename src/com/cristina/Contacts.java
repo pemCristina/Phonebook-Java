@@ -64,6 +64,8 @@ public class Contacts {
 
     public void deleteContact() {
         Scanner keyboard = new Scanner(System.in);
+        LinkedList<String> stringLinkedList = new LinkedList<>();
+
         System.out.println("Position to delete? ");
         try {
             int position = keyboard.nextInt();
@@ -71,6 +73,12 @@ public class Contacts {
                 System.out.println("Error!");
             } else {
                 contacts.remove(position);
+
+                for (Contact c: contacts) {
+                    stringLinkedList.add(c.getName() + "-" + c.getPhone() + "-");
+                }
+
+                fileManager.createFile(Constants.FILE_PATH, stringLinkedList);
                 System.out.println("Deleted contact!");
             }
         } catch (Exception e) {
